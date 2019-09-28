@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://menglingqing.github.io</id>
     <title>孟令卿</title>
-    <updated>2019-09-28T02:40:04.385Z</updated>
+    <updated>2019-09-28T03:32:45.720Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://menglingqing.github.io"/>
     <link rel="self" href="https://menglingqing.github.io/atom.xml"/>
@@ -10,6 +10,64 @@
     <logo>https://menglingqing.github.io/images/avatar.png</logo>
     <icon>https://menglingqing.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 孟令卿</rights>
+    <entry>
+        <title type="html"><![CDATA[css长度单位]]></title>
+        <id>https://menglingqing.github.io/post/css-chang-du-dan-wei</id>
+        <link href="https://menglingqing.github.io/post/css-chang-du-dan-wei">
+        </link>
+        <updated>2019-09-28T03:32:06.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="css长度单位">css长度单位</h1>
+<h2 id="1背景介绍">1.背景介绍</h2>
+<p>我们为什么要选择合适的网页设计单位？</p>
+<p>随着Web的发展，对新的解决方案的需求也会继续增大，对网页的要求更高。</p>
+<p>网页设计单位涉及到我们布局效果，使用不同的单位度量，会对最终的效果造成影响。</p>
+<p>何况，现在互联网发展迅猛，带给我们多样的显示设备和交互界面，比如电脑，手机（刘海屏/可折叠屏），平板。如果在开发中选择的单位不合适，可能在这个设备显示正常，到了另外一个设备上就会出现异常。最难受的就是会带给其他同事bug（想想现在项目中的bug，我都叫苦不迭）</p>
+<p>所以，我们开发人员需要对症下药，哦不😯，需要选择合适的单位进行开发/设计（小公司，需要我稍微做点设计😄）</p>
+<h2 id="2知识剖析都有哪些长度">2.知识剖析（都有哪些长度？）</h2>
+<h3 id="1p-x">1.p x</h3>
+<p>绝对单位</p>
+<p>px是pixel的缩写，翻译过来就是“像素”的意思。px就是设备或者图片中最小的一个点，比如常常听到的电脑像素是1024x768的，表示的是水平方向是1024个像素点，垂直方向是768个像素点。<br>
+像素（px）是我们网页设计常用的单位，也是基本单位。通过px可以设置固定的布局或者元素大小，缺点是没有弹性。</p>
+<h3 id="2em">2.em</h3>
+<p>相对长度单位。参考物是父元素的font-size，具有继承的特点。如果自身定义了font-size，就相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。</p>
+<p>特点：em的值并不是固定的； 2. em会继承父级元素的字体大小。</p>
+<p>例如：段落首行会空出两个格子，常用到2em，就是这个道理</p>
+<h3 id="3rem">3.rem</h3>
+<p>相对长度单位。r’是“root”的缩写，相对于根元素<code>&lt;html&gt;</code>的字体大小。</p>
+<p>优点是，只需要设置根目录的大小就可以把整个页面的成比例的调好。</p>
+<h3 id="4">4.%</h3>
+<p>相对长度单位。一般来说，是相对于父级元素的。</p>
+<p>对于普通定位元素就是我们理解的父级元素；对于position:absolute的元素是相对于已定位的父级元素；对于position: fixed的元素是相对于viewport（可视窗口）</p>
+<p>简单的理解就是，%相对于包含它的最靠近点父级元素的高度和宽度</p>
+<h3 id="5v-w-v-h">5.v w | v h</h3>
+<p>css3新单位，指的是可视窗口的宽度和高度</p>
+<p>1vh 等于1/100的视口高度，1vw 等于1/100的视口宽度</p>
+<p>比如：浏览器高度900px，宽度为750px, 1 vh = 900px/100 = 9 px，1vw = 750px/100 = 7.5 px。</p>
+<h3 id="6vmin-vmax">6.vmin | vmax</h3>
+<p>关于可视窗口高度和宽度两者的最小值和最大值</p>
+<p>比如，浏览器的宽度设置为1200px，高度设置为800px， 1vmax = 1200/100px = 12px， 1vmin = 800/100px = 8px。如果宽度设置为600px,高度设置为1080px, 1vmin就等于6px, 1vmax则未10.8px。</p>
+<h2 id="3注意事项">3.注意事项</h2>
+<ol>
+<li>
+<p>chrome浏览器中强制最小字号为12px，即使设置字号为10px，最终显示依然是12px。</p>
+<p>当我们把html的font-size设置成10px，子节点rem的计算还是以12px为基准，所以网上很多文章提到的将html的font-size设为10px方便计算是不可取的</p>
+</li>
+<li>
+<p>Vw | vh | vmin | vmax使用的前提是在移动端，即首先要在<code>&lt;meta&gt;</code>中声明缩放比例</p>
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content='width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no'/&gt;
+</code></pre>
+</li>
+<li>
+<p>Vw | vh | vmin | vmax 的兼容性</p>
+<p>IE9+局部支持</p>
+<p>Chrome/firefox/safari/opera支持</p>
+<p>iOS safari 8+支持</p>
+<p>Android browser4.4+支持</p>
+<p>Chrome for android39支持</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Promise和Async/Await用法整理]]></title>
         <id>https://menglingqing.github.io/post/promise-he-asyncawait-yong-fa-zheng-li</id>
