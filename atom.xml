@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://menglingqing.github.io</id>
     <title>孟令卿</title>
-    <updated>2019-09-28T02:37:30.829Z</updated>
+    <updated>2019-09-28T02:39:33.591Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://menglingqing.github.io"/>
     <link rel="self" href="https://menglingqing.github.io/atom.xml"/>
@@ -60,6 +60,10 @@ p.catch(res =&gt; {
 </code></pre>
 <p>resolve下面的语句其实是可以执行的，那么为什么reject的状态信息在下面没有接收到呢？这就是因为Promise对象的特点：状态的凝固。new 出一个Promise对象时，这个对象的起始状态局势Pending状态，在根据resolve或reject返回Fullfilled状态/Rejected状态。</p>
 <h3 id="2then">2.then</h3>
+<p>它的作用是为Promise实例添加状态改变时的回调函数，参数个数可以有两个<br>
+1.then(func1, func2)<br>
+2.then(func1)<br>
+3.then(null, func2)</p>
 <p>then分别接收resolve和reject的信息，有三种参数形式，第三种比较怪异，只用来接收做reject处理</p>
 <p>例如：</p>
 <pre><code class="language-javascript">let p = new Promise((resolve, reject) =&gt; {
